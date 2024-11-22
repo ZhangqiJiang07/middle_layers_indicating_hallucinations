@@ -11,9 +11,9 @@ pip install -r requirements.txt
 ```
 
 ## Content
-- `middle_layers_indicating_hallucination.ipynb`: Code for our main findings.
-- `modify_attention.py`: Code for _Heads Guided Attention Intervention method_.
-- `model_manager.py`: Load model, prepare inputs and decode output.
+- `middle_layers_indicating_hallucination.ipynb`: our main findings.
+- `modify_attention.py`: implements _Heads Guided Attention Intervention_ method.
+- `model_manager.py`: used to load model, prepare inputs and decode output.
 - `chair_utils.py`: contains the CHAIR evaluator for sampling real and hallucinated object tokens.
 
 ## Usage
