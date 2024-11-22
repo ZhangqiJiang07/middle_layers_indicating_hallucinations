@@ -28,4 +28,4 @@ llama_head_guide(
     img_end_idx=model_manager.img_end_idx
 )
 ```
-where the parameter `guided_layer_range` denotes the range of the visual information enrichment stage, e.g., 5-18 layers for LLaVA-1.5-7B.
+where the parameter `guided_layer_range` represents the range of the visual information enrichment stage, e.g., 5-18 layers for LLaVA-1.5-7B.
