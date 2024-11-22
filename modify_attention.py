@@ -83,19 +83,8 @@ def llama_new_forward(
         if aggregation == "mean":
             attn_weights[:, :, -1, img_start_idx:img_end_idx] = (
                 attn_weights[:, :, -1, img_start_idx:img_end_idx]
-                + self.beta * attn_weights[:, :, -1, img_start_idx:img_end_idx].abs().mean(dim=1, keepdim=True)
+                + self.alpha * attn_weights[:, :, -1, img_start_idx:img_end_idx].abs().mean(dim=1, keepdim=True)
             )
-
-        elif aggregation == "topK":
-            topk = self.topK
-            _sum_attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32)
-            _sum_attn_weights = _sum_attn_weights[:, :, -1, img_start_idx:img_end_idx].sum(dim=-1)
-            _topK_indices = torch.topk(_sum_attn_weights, k=topk, dim=-1).indices
-            for i in range(attn_weights.shape[0]):
-                attn_weights[i, :, -1, img_start_idx:img_end_idx] = (
-                    attn_weights[i, :, -1, img_start_idx:img_end_idx]
-                    + self.beta * attn_weights[i, _topK_indices[i], -1, img_start_idx:img_end_idx].abs().mean(dim=0, keepdim=True)
-                )
     ### shift visual attention
 
     attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(
@@ -121,14 +110,14 @@ def llama_new_forward(
     return attn_output, attn_weights, past_key_value
 
 
-def llama_head_guide(model, guided_layer_range, aggregation, beta,
-                     img_start_idx, img_end_idx, topK=None):
+def llama_head_guide(model, guided_layer_range, aggregation, alpha,
+                     img_start_idx, img_end_idx, topK=None
+):
     layer_list = guided_layer_range if len(guided_layer_range) == 1 else list(range(guided_layer_range[0], guided_layer_range[1]))
 
     for i in layer_list:
         model.model.layers[i].self_attn.img_start_idx = img_start_idx
         model.model.layers[i].self_attn.img_end_idx = img_end_idx
         model.model.layers[i].self_attn.aggregation = aggregation
-        model.model.layers[i].self_attn.beta = beta
-        model.model.layers[i].self_attn.topK = topK
+        model.model.layers[i].self_attn.alpha = alpha
         model.model.layers[i].self_attn.forward = types.MethodType(llama_new_forward, model.model.layers[i].self_attn)
