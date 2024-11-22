@@ -1,4 +1,6 @@
-# middle_layers_indicating_hallucinations
+# Devils in Middle Layers of Large Vision-Language Models: Interpreting, Detecting and Mitigating Object Hallucinations via Attention Lens
 
 
-Coding will be released after submission...
+
+## Content
+- `middle_layers_indicating_hallucination.ipynb`
