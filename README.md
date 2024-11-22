@@ -1,4 +1,4 @@
-# Devils in Middle Layers of Large Vision-Language Models: Interpreting, Detecting and Mitigating Object Hallucinations via Attention Lens
+# Devils in Middle Layers of Large Vision-Language Models
 
 
 
