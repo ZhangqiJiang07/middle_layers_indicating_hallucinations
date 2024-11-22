@@ -1,12 +1,12 @@
 # Devils in Middle Layers of Large Vision-Language Models
 
 ## Requirements
-Take LLaVA-1.5-7B as an example, we conduct our experiments based on: \\
-Python version: 3.10.14\\
-CUDA toolkit version: 12.1
+Take LLaVA-1.5-7B as an example, we conduct our experiments based on:  
+&emsp;Python version: 3.10.14  
+&emsp;CUDA toolkit version: 12.1  
 
 To install the package in an existing environment, please run
-``` shell
+``` bash
 pip install -r requirements.txt
 ```
 
