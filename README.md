@@ -14,7 +14,7 @@ pip install -r requirements.txt
 - `middle_layers_indicating_hallucination.ipynb`: our main findings.
 - `modify_attention.py`: implements _Heads Guided Attention Intervention_ method.
 - `model_manager.py`: used to load model, prepare inputs and decode output.
-- `chair_utils.py`: contains the CHAIR evaluator for sampling real and hallucinated object tokens.
+- `chair.py`: contains the CHAIR evaluator for sampling real and hallucinated object tokens.
 
 ## Usage
 To use our attention intervention method, please insert the following code before model inference:
