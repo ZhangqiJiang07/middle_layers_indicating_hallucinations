@@ -2,7 +2,7 @@
 [![Arxiv](https://img.shields.io/badge/Paper-Arxiv-red)](https://arxiv.org/abs/2411.16724)
 
 ## Overview
-<img align="right" src="./figs/illustration.png" width="40%"/>
+<img align="right" src="./figs/illustration.png" width="45%"/>
 We investigate how LVLMs process visual information and whether this process causes hallucination:
 
 - Firstly, we use the attention lens to identify the stages at which LVLMs handle visual data, discovering that the middle layers are crucial.
