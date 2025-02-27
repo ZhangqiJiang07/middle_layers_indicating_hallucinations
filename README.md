@@ -71,7 +71,7 @@ where the parameter `guided_layer_range` represents the range of the visual info
 First, generate the LVLM's descriptions and save them in `log/[model]/[file_name].jsonl`:
 ```bash
 # Greedy heads guided decoding
-python chair_eval.py --model llava-1.5 --use-head-guide --guide-range 5,18
+python chair_eval.py --model llava-1.5 --use-head-guide --guide-range 5,18 --alpha 0.5
 ```
 Then, evaluate CHAIR metrics, run
 ```bash
